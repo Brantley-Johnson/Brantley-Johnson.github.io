@@ -62,9 +62,6 @@ $(function () {
     createCannon("left", 650, 1);
 createCannon("top", 1100, 500, 20, 10, 1000, 1250, 2)
 
-halle.physics.offset.x = 0; 
-halle.physics.offset.y = 0;
-
     //////////////////////////////////
     // ONLY CHANGE ABOVE THIS POINT //
     //////////////////////////////////

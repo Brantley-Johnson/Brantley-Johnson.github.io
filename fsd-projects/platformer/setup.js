@@ -8,6 +8,11 @@ const projectileSpeed = 8; // the speed of projectiles
 let shouldDrawGrid = false;
 let gridMade = false;
 
+// Hallebot hitbox settings. These values are multiplied by playerScale below.
+const hallebotHitboxWidth = 50;
+const hallebotHitboxHeight = 105;
+const hallebotCrouchHitboxHeight = 55;
+
 /////////////////////////////////////////////////
 //////////ONLY CHANGE ABOVE THIS POINT///////////
 /////////////////////////////////////////////////
@@ -32,8 +37,8 @@ const player = {
 
 let hitDx;
 let hitDy;
-let hitBoxWidth = 50 * playerScale;
-let hitBoxHeight = 105 * playerScale;
+let hitBoxWidth = hallebotHitboxWidth * playerScale;
+let hitBoxHeight = hallebotHitboxHeight * playerScale;
 let firstTimeSetup = true;
 
 const keyPress = {
