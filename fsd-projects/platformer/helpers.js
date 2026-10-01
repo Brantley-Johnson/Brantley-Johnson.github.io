@@ -30,6 +30,8 @@ function main() {
   drawProjectiles();
   drawCannons();
   drawCollectables();
+  drawCollectableCounter();
+  drawPickupPopup();
   playerFrictionAndGravity();
 
   player.x += player.speedX;
@@ -675,6 +677,54 @@ function drawCollectables() {
   }
 }
 
+function drawCollectableCounter() {
+  const totalCollectables = collectables.length || 3;
+  const collectedCount = collectables.filter((item) => item.collected).length;
+  const counterText = `Face Counter: ${collectedCount}/${totalCollectables}`;
+  const boxWidth = 310;
+  const boxHeight = 52;
+  const boxX = canvas.width / 2 - boxWidth / 2;
+  const boxY = 18;
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+  ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
+
+  ctx.fillStyle = "black";
+  ctx.font = "bold 26px serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(counterText, canvas.width / 2, boxY + boxHeight / 2 + 2);
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+}
+
+function drawPickupPopup() {
+  if (facePickupTimer <= 0) {
+    return;
+  }
+
+  facePickupTimer -= 1;
+  const popupWidth = 500;
+  const popupHeight = 48;
+  const popupX = canvas.width / 2 - popupWidth / 2;
+  const popupY = 78;
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+  ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
+
+  ctx.fillStyle = "black";
+  ctx.font = "bold 22px serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(
+    facePickupMessage,
+    canvas.width / 2,
+    popupY + popupHeight / 2 + 1,
+  );
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+}
+
 function collectablesCollide() {
   for (var i = 0; i < collectables.length; i++) {
     if (
@@ -683,8 +733,19 @@ function collectablesCollide() {
       collectables[i].y < player.y + hitBoxHeight &&
       collectables[i].y + collectableHeight > player.y
     ) {
-      collectables[i].collected = true;
-      checkForWin();
+      if (!collectables[i].collected) {
+        collectables[i].collected = true;
+        facePickupMessage =
+          collectables[i].pickupMessage ||
+          [
+            "Mr. Riordan is proud of you for collecting a face",
+            "Oh golly your really good at this",
+            "I get a A+ now you collected this face",
+          ][i] ||
+          "";
+        facePickupTimer = 90;
+        checkForWin();
+      }
     }
   }
 }
