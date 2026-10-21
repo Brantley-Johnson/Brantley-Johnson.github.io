@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>platformer</title>
-    <link href="platformer.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="setup.js"></script>
-    <script src="helpers.js"></script>
-    <script src="platformer.js"></script>
-  </head>
 
-  <body id="body">
+<head>
+  <meta charset="UTF-8" />
+  <title>platformer</title>
+  <link href="platformer.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="setup.js"></script>
+  <script src="helpers.js"></script>
+  <script src="platformer.js"></script>
+</head>
+
+<body id="body">
+  <div id="game-shell">
     <canvas id="canvas" width="1400" height="750"></canvas>
-    <img id="cannon" src="images/cannon.png" />
-    <img id="player" src="images/halle.png" />
-    <img id="projectile" src="images/projectile.png" />
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg" />
-  </body>
+    <div id="start-screen">
+      <h1>Choose a level</h1>
+      <div id="level-buttons">
+        <button type="button" data-level="1">Level 1</button>
+        <button type="button" data-level="2">Level 2</button>
+      </div>
+    </div>
+  </div>
+  <img id="cannon" src="images/cannon.png" />
+  <img id="player" src="images/halle.png" />
+  <img id="projectile" src="images/projectile.png" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg" />
+</body>
+
 </html>
-
-

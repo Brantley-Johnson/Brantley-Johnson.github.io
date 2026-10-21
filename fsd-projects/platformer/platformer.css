@@ -7,23 +7,80 @@ body {
   align-items: center;
 }
 
+#game-shell {
+  position: relative;
+  margin: 20px;
+}
+
 canvas {
   background-color: lightblue;
-  margin: 20px;
+  display: block;
   border-radius: 15px;
   border: 5px solid rgba(118, 0, 233, 0.375);
 }
 
+#start-screen {
+  position: absolute;
+  inset: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: linear-gradient(
+    145deg,
+    rgba(17, 27, 63, 0.97),
+    rgba(32, 39, 55, 0.97)
+  );
+  color: white;
+  border-radius: 11px;
+  font-family: Georgia, serif;
+}
+
+#start-screen[hidden] {
+  display: none;
+}
+
+#start-screen h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+#level-buttons {
+  display: flex;
+  gap: 14px;
+}
+
+#level-buttons button {
+  min-width: 150px;
+  padding: 13px 20px;
+  border: 2px solid #ffcc00;
+  border-radius: 6px;
+  background: #6381ee;
+  color: white;
+  font:
+    bold 20px Georgia,
+    serif;
+  cursor: pointer;
+}
+
+#level-buttons button:hover,
+#level-buttons button:focus-visible {
+  background: #4b68d1;
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
 #ui-counter {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-family: sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Makes it readable on light backgrounds */
-    pointer-events: none; /* Prevents the text from blocking mouse clicks */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Makes it readable on light backgrounds */
+  pointer-events: none; /* Prevents the text from blocking mouse clicks */
 }
 
 img {
